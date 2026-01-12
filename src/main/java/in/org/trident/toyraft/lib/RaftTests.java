@@ -264,6 +264,7 @@ public class RaftTests {
 
             assert leaderCount == 1 : "Should have exactly one leader in round " + (i+1);
 
+            // no leader when there are only 2 nodes?
             int currentTerm = reports.stream()
                     .filter(r -> r.isLeader())
                     .findFirst()
