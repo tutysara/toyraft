@@ -27,3 +27,20 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '--enable-preview'
+}
+
+tasks.withType(Test) {
+    jvmArgs += '--enable-preview'
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += '--enable-preview'
+}
+
+tasks.register('rafttest', JavaExec) {
+    mainClass = 'in.org.trident.toyraft.lib.RaftTests'
+    classpath = sourceSets.main.runtimeClasspath
+}
