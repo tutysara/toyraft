@@ -48,6 +48,10 @@ enum State {
     DEAD
 }
 
+interface Server {
+    <T, R> R call(int peerId, String method, T args);
+}
+
 // Main Consensus Module
 public class ConsensusModule {
     private static final Logger logger = LoggerFactory.getLogger(ConsensusModule.class);
